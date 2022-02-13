@@ -1,10 +1,13 @@
 public class Food {
-    public final int cookTime;
+    public int cookTime = 0;
     public final String name;
 
-    Food(String name, int cookTime) {
-        this.cookTime = cookTime;
+    Food(String name) {
         this.name = name;
+    }
+
+    public void setCookTime(int ck) {
+        this.cookTime = ck;
     }
 
 

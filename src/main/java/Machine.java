@@ -34,6 +34,7 @@ public class Machine implements Runnable {
                             if (!latches.isEmpty()) {
                                 semaphore.acquire();
                                 f = foods.remove(0);
+                                f.setCookTime(this.cookTime);
                                 l = latches.remove(0);
                                 Thread t = new Thread(new FoodWorker(l, f, semaphore));
                                 t.start();
@@ -44,7 +45,7 @@ public class Machine implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                
+
         }
 
         System.out.println("machine " + foodType + " shut down");

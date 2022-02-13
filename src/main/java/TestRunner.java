@@ -21,12 +21,15 @@ public class TestRunner {
     public static void main(String[] args) throws InterruptedException {
 
         numCooks = 1;
-        numCustomers = 1;
-        numTables = 2;
+        numCustomers = 2;
+        numTables = 1;
         machineCapacity = 2;
 
+        System.out.println("Simulation started.");
+
+
         Machine[] m = {
-            new Machine("fries", 250, TestRunner.machineCapacity),
+            new Machine("fries", 150, TestRunner.machineCapacity),
             new Machine("soda", 50, TestRunner.machineCapacity),
             new Machine("subs", 250, TestRunner.machineCapacity),
             new Machine("pizza", 500, TestRunner.machineCapacity)
@@ -51,15 +54,18 @@ public class TestRunner {
         }
 
 
+        // test pizza data
         ArrayList<Food> ls = new ArrayList<Food>();
-        ls.add(new Food("pizza", 1000));
-        ls.add(new Food("pizza", 1000));
-        ls.add(new Food("pizza", 1000));
+        ls.add(new Food("pizza"));
+        ls.add(new Food("pizza"));
+        ls.add(new Food("pizza"));
 
+
+        Customer.count = numCustomers; // be sure to initialize this before making any customers
         Thread[] customers = new Thread[numCustomers];
         for (int i = 0; i < customers.length; i++) {
-//            customers[i] = new Thread(new Customer("customer" + i, genFoodList()));
-            customers[i] = new Thread(new Customer("customer" + i, ls));
+            customers[i] = new Thread(new Customer("customer" + i, genFoodList()));
+//            customers[i] = new Thread(new Customer("customer" + i, ls));
             customers[i].start();
         }
 
@@ -99,11 +105,11 @@ public class TestRunner {
 
     public static ArrayList<Food> genFoodList() {
         ArrayList<Food> ls = new ArrayList<Food>();
-        if (Math.random() < 0.5) ls.add(new Food("soda", 100));
-        if (Math.random() < 0.5) ls.add(new Food("subs", 400));
-        if (Math.random() < 0.5) ls.add(new Food("fries", 200));
-        if (Math.random() < 0.5) ls.add(new Food("pizza", 500));
-        if (ls.isEmpty()) ls.add(new Food("soda", 100));
+        if (Math.random() < 0.5) ls.add(new Food("soda"));
+        if (Math.random() < 0.5) ls.add(new Food("subs"));
+        if (Math.random() < 0.5) ls.add(new Food("fries"));
+        if (Math.random() < 0.5) ls.add(new Food("pizza"));
+        if (ls.isEmpty()) ls.add(new Food("soda"));
         return ls;
     }
 

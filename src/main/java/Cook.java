@@ -10,19 +10,9 @@ public class Cook implements Runnable {
     CountDownLatch doneSignal;
 
 
-    public Cook(String name) { // OrderRouter should tell cook how long each item should take
+    public Cook(String name) {
         this.name = name;
-
-
     }
-
-//    public Cook(List<Food> s, int n, OrderRouter or) { // OrderRouter should tell cook how long each item should take
-//        this.name="bob";
-//        this.food = s;
-//        this.cookTime = n;
-//        this.doneSignal = new CountDownLatch(s.size());
-//        this.or = or;
-//    }
 
 
     public void run() {
@@ -61,14 +51,6 @@ public class Cook implements Runnable {
 
                         }
                     }
-                }
-
-
-                if (order != null) { // if we actually end up with an order,
-
-
-
-
                 }
 
 
